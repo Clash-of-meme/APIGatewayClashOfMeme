@@ -25,11 +25,11 @@
 
 package io.swagger.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 /**
  * Objet JSON Meme Pattern
@@ -48,9 +48,9 @@ public class MemePattern   {
 
   @JsonProperty("text_bottom")
   private String textBottom = null;
-
   @JsonProperty("token_user")
   private String tokenUser = null;
+
 
   public MemePattern idImgflip(String idImgflip) {
     this.idImgflip = idImgflip;
@@ -61,7 +61,6 @@ public class MemePattern   {
    * Get idImgflip
    * @return idImgflip
   **/
-  @ApiModelProperty(value = "")
   public String getIdImgflip() {
     return idImgflip;
   }
@@ -124,15 +123,16 @@ public class MemePattern   {
     this.textBottom = textBottom;
   }
 
+
   public MemePattern tokenUser(String tokenUser) {
     this.tokenUser = tokenUser;
     return this;
   }
 
-   /**
+  /**
    * Get tokenUser
    * @return tokenUser
-  **/
+   **/
   @ApiModelProperty(value = "")
   public String getTokenUser() {
     return tokenUser;
@@ -141,7 +141,6 @@ public class MemePattern   {
   public void setTokenUser(String tokenUser) {
     this.tokenUser = tokenUser;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -155,26 +154,25 @@ public class MemePattern   {
     return Objects.equals(this.idImgflip, memePattern.idImgflip) &&
         Objects.equals(this.name, memePattern.name) &&
         Objects.equals(this.textTop, memePattern.textTop) &&
-        Objects.equals(this.textBottom, memePattern.textBottom) &&
-        Objects.equals(this.tokenUser, memePattern.tokenUser);
+        Objects.equals(this.textBottom, memePattern.textBottom) ;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idImgflip, name, textTop, textBottom, tokenUser);
+    return Objects.hash(idImgflip, name, textTop, textBottom);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MemePattern {\n");
-    
-    sb.append("    idImgflip: ").append(toIndentedString(idImgflip)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    textTop: ").append(toIndentedString(textTop)).append("\n");
-    sb.append("    textBottom: ").append(toIndentedString(textBottom)).append("\n");
-    sb.append("    tokenUser: ").append(toIndentedString(tokenUser)).append("\n");
+    sb.append("{\n");
+
+    sb.append('"').append("id_imgflip").append('"').append(": ").append('"').append(toIndentedString(idImgflip)).append('"').append(',').append("\n");
+    sb.append('"').append("name").append('"').append(": ").append('"').append(toIndentedString(name)).append('"').append(',').append("\n");
+    sb.append('"').append("text_top").append('"').append(": ").append('"').append(toIndentedString(textTop)).append('"').append(',').append("\n");
+    sb.append('"').append("text_bottom").append('"').append(": ").append('"').append(toIndentedString(textBottom)).append('"').append(',').append("\n");
+    sb.append('"').append("token_user").append('"').append(": ").append('"').append(toIndentedString(tokenUser)).append('"').append("\n");
     sb.append("}");
     return sb.toString();
   }

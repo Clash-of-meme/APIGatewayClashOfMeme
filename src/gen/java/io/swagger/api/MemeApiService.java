@@ -21,7 +21,7 @@ import javax.ws.rs.core.SecurityContext;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-10T21:26:55.970Z")
 public abstract class MemeApiService {
     public abstract Response memeGet(SecurityContext securityContext) throws NotFoundException;
-    public abstract Response memeIdDelete(BigDecimal id,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response memeIdDelete(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response memeIdGet(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response memePictureGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response memePost(MemePattern memeToBuild,SecurityContext securityContext) throws NotFoundException;
