@@ -8,4 +8,6 @@ public abstract class MeApiService {
     public abstract Response meTokenMemeGet(String token,SecurityContext securityContext) throws NotFoundException;
 
     public abstract Response meMemeGet(String token, SecurityContext securityContext);
+
+    public abstract Response meTokenDuelGet(String token, SecurityContext securityContext);
 }

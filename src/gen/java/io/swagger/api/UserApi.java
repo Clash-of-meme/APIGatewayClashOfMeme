@@ -91,4 +91,29 @@ public class UserApi  {
     throws NotFoundException {
         return delegate.userLoginMemeGet(login,securityContext);
     }
+
+    @GET
+    @Path("/{login}/duel")
+    @Consumes({ "application/json", "application/xml" })
+    @Produces({ "application/json", "application/xml" })
+    @io.swagger.annotations.ApiOperation(value = "", notes = "On récupère les memes d'un utilisateur avec son ID.", response = Meme.class, responseContainer = "List", authorizations = {
+            @io.swagger.annotations.Authorization(value = "API key")
+    }, tags={  })
+    @io.swagger.annotations.ApiResponses(value = {
+            @io.swagger.annotations.ApiResponse(code = 200, message = "Successful response", response = Meme.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 204, message = "L'utilisateur n'a pas de meme.", response = Meme.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 400, message = "Pas d'utilisateur.", response = Meme.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 401, message = "Vous devez êtes identifier pour accéder à cette ressource.", response = Meme.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 403, message = "Vous n'avez pas l'autorisation d'accéder à cette ressource.", response = Meme.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 503, message = "La base de données n'est pas disponible.", response = Meme.class, responseContainer = "List") })
+    public Response userLoginDuelGet(@ApiParam(value = "Le login d'un utilisateur",required=true) @PathParam("login") String login
+            ,@Context SecurityContext securityContext)
+            throws NotFoundException {
+        return delegate.userLoginDuelGet(login,securityContext);
+    }
 }

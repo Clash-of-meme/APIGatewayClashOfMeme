@@ -102,6 +102,49 @@ public class MeApiServiceImpl extends MeApiService {
         return Response.status(Constants.ERROR).build();
     }
 
+    @Override
+    public Response meTokenDuelGet(String token, SecurityContext securityContext) {
+        logger.info("Appel du service : " + "MEME");
+
+        HttpClient client = new DefaultHttpClient();
+        URIBuilder builder = new URIBuilder();
+        builder.setScheme(Constants.PROTOCOLE).setHost(Constants.HOST).setPort(Constants.PORT).setPath(pathDuelUserByToken(token));
+        logger.info("URL : " + builder.toString() );
+
+        String token_API = Base64.encodeAsString(Constants.API_LOGIN3+":"+Constants.API_PASSWORD);
+        logger.info("Token d'authentification : "+token_API);
+
+        HttpGet request;
+        request = new HttpGet(builder.toString());
+        request.addHeader(Constants.AUTH,(Constants.BASIC_AUTH+token_API));
+
+        logger.info(request.getAllHeaders());
+        logger.info(request.getURI());
+        try {
+            HttpResponse response = client.execute(request);
+            logger.info("Le code retour du service est : " + response.getStatusLine().getStatusCode());
+            if(response.getStatusLine().getStatusCode() == Constants.OK) {
+                logger.info(response.getEntity().getContentType());
+                String result = EntityUtils.toString(response.getEntity());
+                logger.info(result);
+                return Response.status(Constants.OK).entity(result).build();
+            }
+            else if (response.getStatusLine().getStatusCode() == Constants.NO_CONTENT){
+                return Response.status(Constants.NO_CONTENT).build();
+            }
+            else if (response.getStatusLine().getStatusCode() == Constants.BAD_REQUEST)
+            {
+                return Response.status(Constants.BAD_REQUEST).build();
+            }
+        } catch (IOException e) {
+            Service_Error(e);
+        }
+        return Response.status(Constants.ERROR).build();
+    }
+
+    private String pathDuelUserByToken(String token) {return Constants.SERVICE_DUEL_GET_ME+"/"+token+"/duel";
+    }
+
     private String pathMeByToken(String token) {return Constants.SERVICE_USER_GET_ME+"/"+token;
     }
 
