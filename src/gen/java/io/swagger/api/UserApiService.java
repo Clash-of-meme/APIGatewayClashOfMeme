@@ -10,4 +10,6 @@ public abstract class UserApiService {
     public abstract Response userGet(SecurityContext securityContext);
 
     public abstract Response userIdGet(String login, SecurityContext securityContext);
+
+    public abstract Response userLoginDuelGet(String login, SecurityContext securityContext);
 }

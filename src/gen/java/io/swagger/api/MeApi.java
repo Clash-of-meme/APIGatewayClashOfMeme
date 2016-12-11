@@ -2,6 +2,7 @@ package io.swagger.api;
 
 import io.swagger.annotations.ApiParam;
 import io.swagger.api.factories.MeApiServiceFactory;
+import io.swagger.model.Duel;
 import io.swagger.model.Meme;
 
 import javax.ws.rs.*;
@@ -65,5 +66,30 @@ public class MeApi  {
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.meTokenMemeGet(token,securityContext);
+    }
+
+    @GET
+    @Path("/{token}/duel")
+    @Consumes({ "application/json", "application/xml" })
+    @Produces({ "application/json", "application/xml" })
+    @io.swagger.annotations.ApiOperation(value = "", notes = "On récupère les memes d'un utilisateur avec son token.", response = Duel.class, responseContainer = "List", authorizations = {
+            @io.swagger.annotations.Authorization(value = "API key")
+    }, tags={  })
+    @io.swagger.annotations.ApiResponses(value = {
+            @io.swagger.annotations.ApiResponse(code = 200, message = "Successful response", response = Duel.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 204, message = "L'utilisateur n'a pas de meme.", response = Duel.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 400, message = "Pas d'utilisateur.", response = Duel.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 401, message = "Vous devez êtes identifier pour accéder à cette ressource.", response = Duel.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 403, message = "Vous n'avez pas l'autorisation d'accéder à cette ressource.", response = Duel.class, responseContainer = "List"),
+
+            @io.swagger.annotations.ApiResponse(code = 503, message = "La base de donnée n'a pas répondu.", response = Duel.class, responseContainer = "List") })
+    public Response meTokenDuelGet(@ApiParam(value = "token d'un utilisateur",required=true) @PathParam("token") String token
+            ,@Context SecurityContext securityContext)
+            throws NotFoundException {
+        return delegate.meTokenDuelGet(token,securityContext);
     }
 }

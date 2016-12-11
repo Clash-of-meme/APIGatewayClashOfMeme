@@ -34,7 +34,6 @@ import java.util.Objects;
 /**
  * Me
  */
-@ApiModel(description = "Objet JSON Me")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T21:52:39.785Z")
 public class Me   {
   @JsonProperty("login")

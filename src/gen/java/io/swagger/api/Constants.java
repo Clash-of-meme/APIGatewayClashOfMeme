@@ -26,6 +26,7 @@ public class Constants {
     public static final Double ZERO_DOUBLE = 0.0;
     public static final String API_LOGIN ="ServiceMeme";
     public static final String API_LOGIN2 ="ServiceUtilisateur";
+    public static final String API_LOGIN3 ="ServiceDuel";
     public static final String API_PASSWORD ="epsi2016";
 
     public static final String PROTOCOLE = "http";
@@ -34,7 +35,7 @@ public class Constants {
     public static final String SERVICE_MEME_GETMEME = "/ServiceMeme/meme";
     public static final String SERVICE_MEME_GETPICTURE = "/ServiceMeme/meme/picture";
     public static final String SERVICE_MEME_POSTMEME = "/ServiceMeme/meme";
-    public static final String SERVICE_MEME_GET_USER_BYID ="/ServiceMeme/user";
+    public static final String SERVICE_MEME_GET_MEME_USER_BY_LOGIN ="/ServiceMeme/user";
     public static final String AUTH = "Authorization";
     public static final String BASIC_AUTH ="Basic ";
     public static final String SERVICE_USER = "/ServiceUtilisateur";
@@ -45,4 +46,8 @@ public class Constants {
     public static final String SERVICE_USER_GET_USER = "/ServiceUtilisateur/user";
     public static final String SERVICE_USER_GET_ME = "/ServiceUtilisateur/me";
     public static final String SERVICE_USER_SIGNIN ="/ServiceUtilisateur/signin";
+    public static final String SERVICE_DUEL_GET_DUEL = "/ServiceDuel/duel";
+    public static final String SERVICE_DUEL_POST_DUEL = "/ServiceDuel/duel/demande" ;
+    public static final String SERVICE_DUEL_GET_ME = "/ServiceDuel/me";
+    public static final String SERVICE_DUEL_GET_DUEL_USER_BY_LOGIN = "/ServiceDuel/user";
 }
